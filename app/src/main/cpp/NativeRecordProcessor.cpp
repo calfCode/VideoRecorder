@@ -37,7 +37,7 @@ JNIEXPORT jint JNICALL Java_com_example_videorecorder_songstudio_recorder_Native
 	return -1;
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recorder_NativeRecordProcessor_flushAudioBufferToQueue(JNIEnv * env, jobject obj, jint index) {
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recorder_NativeRecordProcessor_flushAudioBufferToQueue(JNIEnv * env, jobject obj, jint index) {
 	if(handles[index] != 0 ) {
 		RecordProcessor* recorder = handles[index];
 		recorder->flushAudioBufferToQueue();
@@ -47,7 +47,7 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recorder_Native
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recorder_NativeRecordProcessor_destroy(JNIEnv * env, jobject obj, jint index) {
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recorder_NativeRecordProcessor_destroy(JNIEnv * env, jobject obj, jint index) {
 	if(handles[index] != 0 ) {
 		RecordProcessor* recorder = handles[index];
 		recorder->destroy();

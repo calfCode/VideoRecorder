@@ -53,7 +53,7 @@ JNIEXPORT jint JNICALL Java_com_example_videorecorder_songstudio_Videostudio_sta
 	return initCode;
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_Videostudio_stopVideoRecord(JNIEnv * env, jobject obj) {
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_Videostudio_stopVideoRecord(JNIEnv * env, jobject obj) {
 	if (NULL != videoPacketConsumerThread) {
 		videoPacketConsumerThread->stop();
 		delete videoPacketConsumerThread;

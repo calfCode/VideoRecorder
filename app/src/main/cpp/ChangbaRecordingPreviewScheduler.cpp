@@ -5,27 +5,27 @@
 static MVRecordingPreviewController *previewController = 0;
 static jobject g_obj = 0;
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchPreviewFilter(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchPreviewFilter(
         JNIEnv *env, jobject obj, jint filterType, jobject assetManager, jstring filename) {
     if (NULL != previewController) {
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchCameraFacing(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchCameraFacing(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
         previewController->switchCameraFacing();
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_adaptiveVideoQuality(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_adaptiveVideoQuality(
         JNIEnv *env, jobject obj, jint maxBitRate, jint avgBitRate, jint fps) {
     if (NULL != previewController) {
         previewController->adaptiveVideoQuality(maxBitRate, avgBitRate, fps);
     }
 }
 
-JNIEXPORT void JNICALL
+extern "C" JNIEXPORT void JNICALL
 Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_hotConfigQuality(
         JNIEnv *env, jobject instance, jint max, jint avg, jint fps) {
     if (NULL != previewController) {
@@ -34,7 +34,7 @@ Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecord
 
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_startEncoding(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_startEncoding(
         JNIEnv *env, jobject obj, jint width, jint height, jint videoBitRate, jint frameRate,
         jboolean useHardWareEncoding, jint strategy) {
     if (NULL != previewController) {
@@ -43,14 +43,14 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camer
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_stopEncoding(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_stopEncoding(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
         previewController->stopEncoding();
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_createWindowSurface(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_createWindowSurface(
         JNIEnv *env, jobject obj, jobject surface) {
     if (surface != 0 && NULL != previewController) {
         ANativeWindow *window = ANativeWindow_fromSurface(env, surface);
@@ -60,14 +60,14 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camer
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_destroyWindowSurface(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_destroyWindowSurface(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
         previewController->destroyWindowSurface();
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_prepareEGLContext(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_prepareEGLContext(
         JNIEnv *env, jobject obj, jobject surface, jint screenWidth, jint screenHeight,
         jint cameraFacingId) {
     previewController = new MVRecordingPreviewController();
@@ -83,14 +83,14 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camer
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_resetRenderSize(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_resetRenderSize(
         JNIEnv *env, jobject obj, jint screenWidth, jint screenHeight) {
     if (NULL != previewController) {
         previewController->resetRenderSize(screenWidth, screenHeight);
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_destroyEGLContext(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_destroyEGLContext(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
         previewController->destroyEGLContext();
@@ -104,32 +104,32 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camer
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_notifyFrameAvailable(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_notifyFrameAvailable(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
         previewController->notifyFrameAvailable();
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_updateTexMatrix(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_updateTexMatrix(
         JNIEnv *env, jobject obj, jfloatArray array) {
     if (NULL != previewController) {
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchPauseRecordingPreviewState(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchPauseRecordingPreviewState(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchCommonPreviewState(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_switchCommonPreviewState(
         JNIEnv *env, jobject obj) {
     if (NULL != previewController) {
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_hotConfig(
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_hotConfig(
         JNIEnv *env, jobject instance, jint bitRate, jint fps, jint gopSize) {
     LOGI(" %s", "Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_hotConfig");
     if (NULL != previewController) {
@@ -137,7 +137,7 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camer
     }
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_setBeautifyParam(JNIEnv* env, jobject obj, jint key, jfloat value) {
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_setBeautifyParam(JNIEnv* env, jobject obj, jint key, jfloat value) {
 	LOGI("Java_com_example_videorecorder_songstudio_recording_camera_preview_ChangbaRecordingPreviewScheduler_setBeautifyParam");
 	LOGI("setbeautify: %d, %f", key, value);
 	if(NULL != previewController) {

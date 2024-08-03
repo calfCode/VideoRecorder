@@ -3,7 +3,7 @@
 #define LOG_TAG "SongDecoderService"
 LiveSongDecoderController* decoderController = NULL;
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_init(JNIEnv * env, jobject obj, jfloat packetBufferTimePercent, jint vocalSamplerate) {
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_init(JNIEnv * env, jobject obj, jfloat packetBufferTimePercent, jint vocalSamplerate) {
 	decoderController = new LiveSongDecoderController();
 	decoderController->init(packetBufferTimePercent, vocalSamplerate);
 }
@@ -22,13 +22,13 @@ JNIEXPORT jint JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDe
 	return -1;
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_setAccompanyVolume(JNIEnv * env, jobject obj, jfloat volume, jfloat accompanyMax){
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_setAccompanyVolume(JNIEnv * env, jobject obj, jfloat volume, jfloat accompanyMax){
 	if(NULL != decoderController) {
 		decoderController->setVolume(volume, accompanyMax);
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_startAccompany(JNIEnv * env, jobject obj, jstring accompanyFilePathParam){
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_startAccompany(JNIEnv * env, jobject obj, jstring accompanyFilePathParam){
 	if(NULL != decoderController){
 		const char* accompanyFilePath = env->GetStringUTFChars(accompanyFilePathParam, NULL);
 		decoderController->startAccompany(accompanyFilePath);
@@ -36,25 +36,25 @@ JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDe
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_pauseAccompany(JNIEnv * env, jobject obj){
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_pauseAccompany(JNIEnv * env, jobject obj){
 	if(NULL != decoderController){
 		decoderController->pauseAccompany();
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_resumeAccompany(JNIEnv * env, jobject obj){
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_resumeAccompany(JNIEnv * env, jobject obj){
 	if(NULL != decoderController){
 		decoderController->resumeAccompany();
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_stopAccompany(JNIEnv * env, jobject obj){
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_stopAccompany(JNIEnv * env, jobject obj){
 	if(NULL != decoderController){
 		decoderController->stopAccompany();
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_destory(JNIEnv * env, jobject obj) {
+extern "C" JNIEXPORT void JNICALL Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_destory(JNIEnv * env, jobject obj) {
 	LOGI("enter Java_com_example_videorecorder_songstudio_decoder_MusicDecoder_destory()");
 	if(NULL != decoderController) {
 		decoderController->destroy();
